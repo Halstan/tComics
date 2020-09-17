@@ -23,7 +23,7 @@ data class User constructor(
         @Column(nullable = false, length = 40)
         val apellido: String?,
 
-        @Column(nullable = false, length = 10)
+        @Column(nullable = false, length = 80)
         val password: String?,
 
         @Transient
@@ -34,10 +34,10 @@ data class User constructor(
 
         @ManyToMany(fetch = FetchType.EAGER)
         @JoinTable(name = "UserRol", joinColumns = [JoinColumn(name = "idUser")], inverseJoinColumns = [JoinColumn(name = "idRol")])
-        val rol: Set<Rol>?
+        val rol: Set<Rol>?,
 
-        /*@OneToMany(mappedBy = "usuario")
-        val vent: List<Venta>?*/
+        @OneToMany(mappedBy = "user")
+        val vent: List<Venta>?
 
         ) : Serializable {
 

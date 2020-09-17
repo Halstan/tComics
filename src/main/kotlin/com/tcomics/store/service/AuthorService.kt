@@ -30,7 +30,8 @@ class AuthorService constructor (
         return this.authorRepository.findById(idAuthor)
     }
 
-    fun findAuthorsByEditorial(idEditorial: Int): List<Author>{
-        return this.authorRepository.findAuthorsByEditorial_IdEditorial(idEditorial)
+    fun deleteAuthor(idAuthor: Int){
+        this.authorRepository.deleteById(idAuthor)
     }
+
 }

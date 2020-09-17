@@ -49,6 +49,10 @@ data class Comic constructor(
         @JoinColumn(name = "idClasificacion")
         val clasificacion: Clasificacion?,
 
+        @ManyToOne
+        @JoinColumn(name = "idEditorial")
+        val editorial: Editorial?,
+
         @Column(length = 20)
         var estado: String?,
 

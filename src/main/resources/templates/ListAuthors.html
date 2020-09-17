@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <title>Listar autores</title>
+</head>
+<body>
+<h1>Lista de Autores</h1>
+<table>
+    <thead>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha nacimiento</th>
+        <th>Comics escritos</th>
+        <th>Estado</th>
+        <th>Comics</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </thead>
+    <tbody>
+        <tr th:if = "${authors.isEmpty()}">
+            <td>No existing authors</td>
+        </tr>
+        <tr th:each = "author : ${authors}">
+            <td><span th:text="${author.idAutor}"></span></td>
+            <td><span th:text="${author.nombre}"></span></td>
+            <td><span th:text="${author.apellido}"></span></td>
+            <td><span th:text="${author.fechaNacimiento}"></span></td>
+            <td><span th:text="${author.comicsEscritos}"></span></td>
+            <td><span th:text="${author.estado}"></span></td>
+            <td><span th:text="${author.comics}"></span></td>
+            <td><a th:href="@{/autores/editar/{id}(id=${author.idAutor})}" class="btn btn-primary">
+                <i class="fas fa-user-edit ml-2"></i>
+            </a></td>
+            <td><a th:href="@{/autores/eliminar/{id}(id=${author.idAutor})}" class="btn btn-danger">
+                <i class="fas fa-user-times ml-2"></i>
+            </a></td>
+        </tr>
+    </tbody>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

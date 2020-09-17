@@ -21,7 +21,7 @@ data class Editorial constructor(
         val anhoFundacion: Date?,
 
         @OneToMany(mappedBy = "editorial")
-        val authors: List<Author>?
+        val comics: List<Comic>?
 
         ) : Serializable {
 

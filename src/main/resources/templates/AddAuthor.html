@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Agregar Autor</title>
+</head>
+<body>
+
+<h1>Agregar autor</h1>
+
+<form action="#" th:action="@{/autores/agregar}" th:object="${author}" method="post">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group col-md-6">
+                <label for="name" class="col-form-label">Nombre</label>
+                <input type="text" th:field = "*{nombre}" class="form-control" id="name" placeholder="Nombre">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="apellido" class="col-form-label">Apellido</label>
+                <input type="text" th:field = "*{apellido}" class="form-control" id="apellido" placeholder="Apellido">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="nacimiento" class="col-form-label">Fecha de nacimiento</label>
+                <input type="date" th:field = "*{fechaNacimiento}" class="form-control" id="nacimiento" placeholder="Fecha de nacimiento">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="comicsEscritos" class="col-form-label">Comics Escritos</label>
+                <input type="number" th:field = "*{comicsEscritos}" class="form-control" id="comicsEscritos" placeholder="Comics escritos">
+            </div>
+
+            <!--<div class="form-group col-md-6">
+                <label for="apellido" class="col-form-label">Apellido</label>
+                <input type="text" th:field = "*{apellido}" class="form-control" id="apellido" placeholder="Apellido">
+            </div>-->
+
+            <div class="form-group col-md-6">
+                <label for="estado" class="col-form-label">Estado</label>
+                <input type="text" th:field = "*{estado}" class="form-control" id="estado" placeholder="Estado">
+            </div>
+
+            <div class="col-md-6">
+                <input type="submit" class="btn btn-primary" value = "Registrar">
+            </div>
+
+            <input type="hidden" id="id" th:field="*{idAutor}">
+
+        </div>
+    </div>
+
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

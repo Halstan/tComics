@@ -12,36 +12,32 @@ data class Author constructor(
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val idAutor: Int?,
+        val idAutor: Int? = null,
 
         @Column(length = 50)
         @NotBlank
-        val nombre: String?,
+        val nombre: String? = null,
 
         @Column(length = 50)
         @NotBlank
-        val apellido: String?,
+        val apellido: String? = null,
 
         @Temporal(TemporalType.DATE)
         @DateTimeFormat(pattern = "yyyy-MM-dd", iso = DateTimeFormat.ISO.DATE)
-        val fechaNacimiento: Date?,
+        val fechaNacimiento: Date? = null,
 
         @Column
-        val comicEscritos: Short?,
+        val comicsEscritos: Short? = null,
 
-        @NotBlank
+        //@NotBlank
         @Column(nullable = true, length = 255)
-        val foto: String?,
+        val foto: String? = null,
 
         @Column(length = 15)
-        var estado: String,
-
-        @ManyToOne
-        @JoinColumn(name = "idEditorial")
-        val editorial: Editorial?,
+        var estado: String? = null,
 
         @OneToMany(mappedBy = "author")
-        val comics: List<Comic>?
+        val comics: List<Comic>? = null
 
         ): Serializable {
 
