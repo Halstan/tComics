@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="layouts/Layouts::head"></div>
+    <title>Listar géneros</title>
+</head>
+<body>
+
+<nav th:replace="layouts/Layouts::navbar"></nav>
+
+<h1>Lista de géneros</h1>
+
+<table class="table table-responsive">
+    <thead>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </thead>
+    <tbody>
+        <tr th:if="${genres.isEmpty()}">
+            <td>No existing genres</td>
+        </tr>
+        <tr th:each="genre : ${genres}">
+            <td><span th:text="${genre.idGenre}"></span></td>
+            <td><span th:text="${genre.nombre}"></span></td>
+        <td><a th:href="@{/generos/editar/{id}(id=${genre.idGenre})}" class="btn btn-primary">
+            <i class="fas fa-user-edit ml-2"></i>
+        </a></td>
+        <td><a th:href="@{/generos/eliminar/{id}(id=${genre.idGenre})}" class="btn btn-danger">
+            <i class="fas fa-user-times ml-2"></i>
+        </a></td>
+        </tr>
+    </tbody>
+</table>
+
+<div th:replace="layouts/Layouts::js"></div>
+
+</body>
+</html>

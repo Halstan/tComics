@@ -23,12 +23,12 @@ class AuthorController constructor(
     @GetMapping("/listar")
     private fun showAll(model: Model): String{
         model.addAttribute("authors", authorService.findAll())
-        return "ListAuthors"
+        return "author/ListAuthors"
     }
 
     @GetMapping("/agregar")
     private fun addAuthor(author: Author): String{
-        return "AddAuthor"
+        return "author/AddAuthor"
     }
 
     @PostMapping("/agregar")
@@ -47,7 +47,7 @@ class AuthorController constructor(
         } else {
             model.addAttribute("author", author)
         }
-        return "AddAuthor"
+        return "author/AddAuthor"
     }
 
     @GetMapping("/eliminar/{idAuthor}")

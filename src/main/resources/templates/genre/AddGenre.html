@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="layouts/Layouts::head"></div>
+    <title>Agregar género</title>
+</head>
+<body>
+
+<nav th:replace="layouts/Layouts::navbar"></nav>
+
+<h1>Agregar género</h1>
+
+<form action="#" th:action="@{/generos/agregar}" th:object="${genre}" method="post">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group col-md-6">
+                <label for="name" class="col-form-label">Nombre</label>
+                <input type="text" th:field = "*{nombre}" class="form-control" id="name" placeholder="Nombre">
+            </div>
+
+            <div class="col-md-6">
+                <input type="submit" class="btn btn-primary" value = "Registrar">
+            </div>
+
+            <input type="hidden" id="id" th:field="*{idGenre}">
+
+        </div>
+    </div>
+
+</form>
+
+<div th:replace="layouts/Layouts::js"></div>
+
+</body>
+</html>

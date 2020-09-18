@@ -9,13 +9,13 @@ data class Genre constructor(
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val idGenre: Int?,
+        val idGenre: Int? = null,
 
         @Column(length = 30)
-        val nombre: String?,
+        val nombre: String? = null,
 
         @OneToMany(mappedBy = "genero")
-        val comics: List<Comic>?
+        val comics: List<Comic>? = null
 
         ): Serializable{
 }
