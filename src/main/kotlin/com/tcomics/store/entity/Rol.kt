@@ -9,14 +9,14 @@ data class Rol constructor(
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val idRol: Int?,
+        val idRol: Int? = null,
 
         @Column(nullable = false, unique = true)
-        val type: String?,
+        val type: String? = null,
 
         //LADO INVERSE
         @ManyToMany(mappedBy = "rol", fetch = FetchType.EAGER)
-        val user: Set<User>?
+        val user: Set<User>? = null
 
         ) : Serializable {
 
