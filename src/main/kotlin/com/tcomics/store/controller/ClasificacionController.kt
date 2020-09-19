@@ -35,7 +35,7 @@ class ClasificacionController  constructor(
     @PostMapping("/agregar")
     private fun addClasificacionPost(@Valid clasificacion: Clasificacion, model: Model): String{
         this.clasificacionService.addClasificacion(clasificacion)
-        model.addAttribute("authors", this.clasificacionService.findAll())
+        model.addAttribute("clasificaciones", this.clasificacionService.findAll())
         return "redirect:/clasificaciones/listar"
     }
 

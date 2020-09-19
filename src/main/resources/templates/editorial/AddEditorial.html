@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="layouts/Layouts::head"></div>
+    <title>Agregar editorial</title>
+</head>
+<body>
+
+<nav th:replace="layouts/Layouts::navbar"></nav>
+
+<h1>Agregar editorial</h1>
+
+<form action="#" th:action="@{/editoriales/agregar}" th:object="${editorial}" method="post">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group col-md-6">
+                <label for="name" class="col-form-label">Nombre</label>
+                <input type="text" th:field = "*{nombre}" class="form-control" id="name" placeholder="Nombre">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="anho" class="col-form-label">Año de fundación</label>
+                <input type="date" th:field = "*{anhoFundacion}" class="form-control" id="anho" placeholder="Nombre">
+            </div>
+
+            <div class="col-md-6">
+                <input type="submit" class="btn btn-primary" value = "Registrar">
+            </div>
+
+            <input type="hidden" id="id" th:field="*{idEditorial}">
+
+        </div>
+    </div>
+
+</form>
+
+<div th:replace="layouts/Layouts::js"></div>
+
+</body>
+</html>

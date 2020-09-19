@@ -4,6 +4,8 @@ import org.springframework.format.annotation.DateTimeFormat
 import java.io.Serializable
 import java.util.*
 import javax.persistence.*
+import javax.validation.constraints.NotBlank
+import javax.validation.constraints.Size
 
 @Entity
 @Table(name = "Editoriales")
@@ -11,17 +13,19 @@ data class Editorial constructor(
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val idEditorial: Int?,
+        val idEditorial: Int? = null,
 
-        @Column
-        val nombre: String?,
+        @Column(length = 30)
+        @NotBlank
+        @Size(max = 30, min = 1)
+        val nombre: String? = null,
 
         @Temporal(TemporalType.DATE)
         @DateTimeFormat(pattern = "yyyy-MM-dd", iso = DateTimeFormat.ISO.DATE)
-        val anhoFundacion: Date?,
+        val anhoFundacion: Date? = null,
 
         @OneToMany(mappedBy = "editorial")
-        val comics: List<Comic>?
+        val comics: List<Comic>? = null
 
         ) : Serializable {
 

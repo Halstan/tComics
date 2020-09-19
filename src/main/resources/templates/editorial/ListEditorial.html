@@ -2,32 +2,34 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="layouts/Layouts::head"></div>
-    <title>Listar clasificaciones</title>
+    <title>Listar editoriales</title>
 </head>
 <body>
 
 <nav th:replace="layouts/Layouts::navbar"></nav>
 
-<h1>Lista de clasificaciones</h1>
+<h1>Lista de editoriales</h1>
 
 <table class="table table-responsive table-bordered">
     <thead>
     <th>#</th>
     <th>Nombre</th>
+    <th>Fundación</th>
     <th>Editar</th>
     <th>Eliminar</th>
     </thead>
     <tbody>
-    <tr th:if="${clasificaciones.isEmpty()}">
-        <td>No existing classifications</td>
+    <tr th:if="${editoriales.isEmpty()}">
+        <td>No existing editorials</td>
     </tr>
-    <tr th:each="clasificacion : ${clasificaciones}">
-        <td><span th:text="${clasificacion.idClasificacion}"></span></td>
-        <td><span th:text="${clasificacion.nombre}"></span></td>
-        <td><a th:href="@{/clasificaciones/editar/{id}(id=${clasificacion.idClasificacion})}" class="btn btn-primary">
+    <tr th:each="editorial : ${editoriales}">
+        <td><span th:text="${editorial.idEditorial}"></span></td>
+        <td><span th:text="${editorial.nombre}"></span></td>
+        <td><span th:text="${editorial.anhoFundacion}"></span></td>
+        <td><a th:href="@{/editoriales/editar/{id}(id=${editorial.idEditorial})}" class="btn btn-primary">
             <i class="fas fa-user-edit ml-2"></i>
         </a></td>
-        <td><a th:href="@{/clasificaciones/eliminar/{id}(id=${clasificacion.idClasificacion})}" class="btn btn-danger">
+        <td><a th:href="@{/editoriales/eliminar/{id}(id=${editorial.idEditorial})}" class="btn btn-danger">
             <i class="fas fa-user-times ml-2"></i>
         </a></td>
     </tr>
