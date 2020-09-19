@@ -25,7 +25,6 @@ class GenreController constructor(
         return "genre/ListGenres"
     }
 
-
     @GetMapping("/agregar")
     private fun addGenre(genre: Genre): String{
         return "genre/AddGenre"

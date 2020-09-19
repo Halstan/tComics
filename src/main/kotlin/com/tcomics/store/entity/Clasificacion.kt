@@ -8,13 +8,13 @@ import javax.persistence.*
 data class Clasificacion constructor(
 
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val idClasificacion: Int?,
+        val idClasificacion: Int? = null,
 
         @Column
-        val nombre: String?,
+        val nombre: String? = null,
 
         @OneToMany(mappedBy = "clasificacion")
-        val comic: List<Comic>?
+        val comic: List<Comic>? = null
 
         ) : Serializable {
 }
