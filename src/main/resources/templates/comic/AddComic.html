@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="layouts/Layouts::head"></div>
+    <title>Agregar comic</title>
+</head>
+<body>
+
+<nav th:replace="layouts/Layouts::navbar"></nav>
+<div class="container">
+
+<h1>Agregar comic</h1>
+
+<form action="#" th:action="@{/comics/agregar}" th:object="${comic}" method="post">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group col-md-6">
+                <label for="name" class="col-form-label">Nombre</label>
+                <input type="text" th:field = "*{nombre}" class="form-control" id="name" placeholder="Nombre">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="publicacion" class="col-form-label">Fecha de publicación</label>
+                <input type="date" th:field = "*{fechaPublicacion}" class="form-control" id="publicacion" placeholder="Fecha de publicación">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="ultPublicacion" class="col-form-label">Fecha de última publicación</label>
+                <input type="date" th:field = "*{fechaUltPublicacion}" class="form-control" id="ultPublicacion" placeholder="Fecha de ultima publicación">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="cantidad" class="col-form-label">Cantidad disponible</label>
+                <input type="number" th:field = "*{cantidad}" class="form-control" id="cantidad" placeholder="Cantidad disponible">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="precio" class="col-form-label">Precio</label>
+                <input type="number" th:field = "*{precio}" class="form-control" id="precio" placeholder="Precio">
+            </div>
+
+            <!--<div class="form-group col-md-6">
+                <label for="apellido" class="col-form-label">Apellido</label>
+                <input type="text" th:field = "*{apellido}" class="form-control" id="apellido" placeholder="Apellido">
+            </div>-->
+
+            <div class="form-group col-md-6">
+            <label class="form-group col-md-6">Géneros</label>
+                <select name="listGenres" class="form-control form-control-sm col-md-6">
+                    <option value=""> -- </option>
+                    <option th:each="genre : ${genres}"
+                            th:value="${genre.idGenre}"
+                            th:utext="${genre.nombre}"></option>
+                </select>
+
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="col-form-label">Clasificaciones</label>
+                    <select name="listClasificaciones" class="form-control form-control-sm col-md-6">
+                        <option value=""> -- </option>
+                        <option th:each="clasificacion : ${clasificaciones}"
+                                th:value="${clasificacion.idClasificacion}"
+                                th:utext="${clasificacion.nombre}"></option>
+                    </select>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="col-form-label">Autores</label>
+                    <select name="listAuthors" class="form-control form-control-sm col-md-6">
+                        <option value=""> -- </option>
+                        <option th:each="author : ${authors}"
+                                th:value="${author.idAutor}"
+                                th:utext="${author.nombre} + ' ' + ${author.apellido}"></option>
+                    </select>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="col-form-label">Editoriales</label>
+                    <select name="listEditoriales" class="form-control form-control-sm col-md-6">
+                        <option value=""> -- </option>
+                        <option th:each="editorial : ${editoriales}"
+                                th:value="${editorial.idEditorial}"
+                                th:utext="${editorial.nombre}"></option>
+                    </select>
+            </div>
+
+            <div class="col-md-6">
+                <input type="submit" class="btn btn-primary" value = "Registrar">
+            </div>
+
+            <input type="hidden" id="id" th:field="*{idComic}">
+
+        </div>
+    </div>
+
+</form>
+</div>
+
+<div th:replace="layouts/Layouts::js"></div>
+
+</body>
+</html>

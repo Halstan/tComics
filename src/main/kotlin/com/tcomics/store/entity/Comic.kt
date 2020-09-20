@@ -12,10 +12,10 @@ data class Comic constructor(
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val idComic: Long?,
+        val idComic: Long? = null,
 
         @Column(length = 60)
-        val nombre: String?,
+        val nombre: String? = null,
 
         @Temporal(TemporalType.DATE)
         @DateTimeFormat(pattern = "yyyy-MM-dd", iso = DateTimeFormat.ISO.DATE)
@@ -27,15 +27,15 @@ data class Comic constructor(
 
         @Column
         @NotBlank
-        val cantidad: Short?,
+        val cantidad: Short? = null,
 
         @Column
         @NotBlank
-        val precio: Double?,
+        val precio: Double? = null,
 
         @NotBlank
         @Column(nullable = true, length = 255)
-        val Foto: String?,
+        val Foto: String? = null,
 
         @ManyToOne
         @JoinColumn(name = "idGenre")
@@ -47,17 +47,17 @@ data class Comic constructor(
 
         @ManyToOne
         @JoinColumn(name = "idClasificacion")
-        val clasificacion: Clasificacion?,
+        val clasificacion: Clasificacion? = null,
 
         @ManyToOne
         @JoinColumn(name = "idEditorial")
-        val editorial: Editorial?,
+        val editorial: Editorial? = null,
 
         @Column(length = 20)
-        var estado: String?,
+        var estado: String? = null,
 
         @OneToMany(mappedBy = "comic")
-        val ventas: List<Venta>?
+        val ventas: List<Venta>? = null
 
         ): Serializable {
 
