@@ -1,5 +1,6 @@
 package com.tcomics.store.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.springframework.format.annotation.DateTimeFormat
 import java.io.Serializable
 import java.util.*
@@ -37,6 +38,7 @@ data class Author constructor(
         var estado: String? = null,
 
         @OneToMany(mappedBy = "author")
+        @JsonIgnore
         val comics: List<Comic>? = null
 
         ): Serializable {
@@ -44,6 +46,10 @@ data class Author constructor(
         @PrePersist
         fun init(){
                 estado = "ACTIVO"
+        }
+
+        override fun toString(): String {
+                return "Author(idAutor=$idAutor, nombre=$nombre, apellido=$apellido, fechaNacimiento=$fechaNacimiento, comicsEscritos=$comicsEscritos, foto=$foto, estado=$estado, comics=$comics)"
         }
 
 }

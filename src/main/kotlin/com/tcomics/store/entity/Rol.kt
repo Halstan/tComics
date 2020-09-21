@@ -20,4 +20,7 @@ data class Rol constructor(
 
         ) : Serializable {
 
+        override fun toString(): String {
+                return "Rol(idRol=$idRol, type=$type, user=$user)"
+        }
 }

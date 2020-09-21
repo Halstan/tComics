@@ -1,5 +1,6 @@
 package com.tcomics.store.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import java.io.Serializable
 import javax.persistence.*
 
@@ -15,7 +16,12 @@ data class Genre constructor(
         val nombre: String? = null,
 
         @OneToMany(mappedBy = "genero")
+        @JsonIgnore
         val comics: List<Comic>? = null
 
         ): Serializable{
+
+        override fun toString(): String {
+                return "Genre(idGenre=$idGenre, nombre=$nombre)"
+        }
 }

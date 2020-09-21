@@ -43,7 +43,12 @@ data class Venta constructor(
         ) : Serializable {
 
     @PrePersist
-    fun init(){
+    fun init() {
         state = "ACTIVO"
     }
+
+    override fun toString(): String {
+        return "Venta(idVenta=$idVenta, user=$user, comic=$comic, fechaVenta=$fechaVenta, fechaDesactivo=$fechaDesactivo, state='$state', precioBruto=$precioBruto, precioTotal=$precioTotal, cantidad=$cantidad)"
+    }
+
 }

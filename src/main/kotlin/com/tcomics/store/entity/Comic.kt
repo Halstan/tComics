@@ -66,4 +66,13 @@ data class Comic constructor(
         estado = "PUBLICANDO"
     }
 
+        @PreUpdate
+        fun update(){
+             estado = "PUBLICANDO"
+        }
+
+        override fun toString(): String {
+                return "Comic(idComic=$idComic, nombre=$nombre, fechaPublicacion=$fechaPublicacion, fechaUltPublicacion=$fechaUltPublicacion, cantidad=$cantidad, precio=$precio, Foto=$Foto, estado=$estado, ventas=$ventas)"
+        }
+
 }

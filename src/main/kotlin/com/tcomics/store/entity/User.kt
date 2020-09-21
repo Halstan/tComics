@@ -45,4 +45,9 @@ data class User constructor(
     fun init(){
         state = "ACTIVO"
     }
+
+    override fun toString(): String {
+        return "User(idUser=$idUser, email=$email, nombre=$nombre, apellido=$apellido, password=$password, confirmPassword='$confirmPassword', state='$state', rol=$rol, vent=$vent)"
+    }
+
 }

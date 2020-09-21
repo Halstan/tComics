@@ -37,7 +37,7 @@
 
             <div class="form-group col-md-6">
                 <label for="precio" class="col-form-label">Precio</label>
-                <input type="number" th:field = "*{precio}" class="form-control" id="precio" placeholder="Precio">
+                <input type="text" th:field = "*{precio}" class="form-control" id="precio" placeholder="Precio">
             </div>
 
             <!--<div class="form-group col-md-6">
@@ -46,9 +46,9 @@
             </div>-->
 
             <div class="form-group col-md-6">
-            <label class="form-group col-md-6">Géneros</label>
-                <select name="listGenres" class="form-control form-control-sm col-md-6">
-                    <option value=""> -- </option>
+            <label for="genero" class="form-group col-md-6">Géneros</label>
+                <select name="listGenres" class="form-control selectpicker" th:field="*{genero}" id="genero">
+                    <option value=""> Selecciona una opción </option>
                     <option th:each="genre : ${genres}"
                             th:value="${genre.idGenre}"
                             th:utext="${genre.nombre}"></option>
@@ -57,9 +57,9 @@
             </div>
 
             <div class="form-group col-md-6">
-                <label class="col-form-label">Clasificaciones</label>
-                    <select name="listClasificaciones" class="form-control form-control-sm col-md-6">
-                        <option value=""> -- </option>
+                <label for="clasi" class="col-form-label">Clasificaciones</label>
+                    <select name="listClasificaciones" class="form-control selectpicker" th:field="*{clasificacion}" id="clasi">
+                        <option value=""> Selecciona una opción </option>
                         <option th:each="clasificacion : ${clasificaciones}"
                                 th:value="${clasificacion.idClasificacion}"
                                 th:utext="${clasificacion.nombre}"></option>
@@ -67,9 +67,9 @@
             </div>
 
             <div class="form-group col-md-6">
-                <label class="col-form-label">Autores</label>
-                    <select name="listAuthors" class="form-control form-control-sm col-md-6">
-                        <option value=""> -- </option>
+                <label for="autor" class="col-form-label">Autores</label>
+                    <select name="listAuthors" class="form-control selectpicker" th:field="*{author}" id="autor">
+                        <option value=""> Selecciona una opción </option>
                         <option th:each="author : ${authors}"
                                 th:value="${author.idAutor}"
                                 th:utext="${author.nombre} + ' ' + ${author.apellido}"></option>
@@ -77,17 +77,17 @@
             </div>
 
             <div class="form-group col-md-6">
-                <label class="col-form-label">Editoriales</label>
-                    <select name="listEditoriales" class="form-control form-control-sm col-md-6">
-                        <option value=""> -- </option>
+                <label for="editorial" class="col-form-label">Editoriales</label>
+                    <select name="listEditoriales" class="form-control selectpicker" th:field="*{editorial}" id="editorial">
+                        <option value=""> Selecciona una opción </option>
                         <option th:each="editorial : ${editoriales}"
                                 th:value="${editorial.idEditorial}"
-                                th:utext="${editorial.nombre}"></option>
+                                th:utext="${editorial.nombre}">editorial</option>
                     </select>
             </div>
 
             <div class="col-md-6">
-                <input type="submit" class="btn btn-primary" value = "Registrar">
+                <input type="submit" class="btn btn-primary" value="Registrar">
             </div>
 
             <input type="hidden" id="id" th:field="*{idComic}">

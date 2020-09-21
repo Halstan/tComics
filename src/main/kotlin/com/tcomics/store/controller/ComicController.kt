@@ -24,6 +24,13 @@ class ComicController @Autowired constructor(
         val editorialService: EditorialService
     ){
 
+    private fun getModels(model: Model){
+        model.addAttribute("clasificaciones", this.clasificacionService.findAll())
+        model.addAttribute("authors", this.authorService.findAll())
+        model.addAttribute("genres", this.genreService.findAll())
+        model.addAttribute("editoriales", this.editorialService.findAll())
+    }
+
     @GetMapping("listar")
     private fun showAll(model: Model): String{
         model.addAttribute("comics", this.comicService.findAll())
@@ -33,14 +40,7 @@ class ComicController @Autowired constructor(
 
     @GetMapping("/agregar")
     private fun addComic(comic: Comic, model: Model): String{
-
-        model.addAttribute("clasificaciones", this.clasificacionService.findAll())
-
-        model.addAttribute("authors", this.authorService.findAll())
-
-        model.addAttribute("genres", this.genreService.findAll())
-
-        model.addAttribute("editoriales", this.editorialService.findAll())
+        getModels(model)
 
         return "comic/AddComic"
     }
@@ -54,6 +54,7 @@ class ComicController @Autowired constructor(
 
     @GetMapping("/editar/{idComic}")
     private fun editComicById(model: Model, @PathVariable idComic: Optional<Long>): String? {
+        getModels(model)
         if (idComic.isPresent) {
             val comic2: Optional<Comic> = this.comicService.findComicById(idComic.get())
             model.addAttribute("comic", comic2)

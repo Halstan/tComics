@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="layouts/Layouts::head"></div>
+    <title>Listar comics</title>
 </head>
+
 <body>
 
+<nav th:replace="layouts/Layouts::navbar"></nav>
+
+<h1>Lista de comics</h1>
+
+<table class="table table-responsive table-bordered">
+    <thead>
+    <th>#</th>
+    <th>Nombre</th>
+    <th>Fecha de publicación</th>
+    <th>Fecha de última publicación</th>
+    <th>Estado</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+    <th>Author</th>
+    <th>Clasificacion</th>
+    <th>Editorial</th>
+    <th>Género</th>
+    <th>Editar</th>
+    <th>Eliminar</th>
+    </thead>
+    <tbody>
+    <tr th:if="${comics.isEmpty()}">
+        <td>No existing editorials</td>
+    </tr>
+    <tr th:each="comic : ${comics}">
+        <td><span th:text="${comic.idComic}"></span></td>
+        <td><span th:text="${comic.nombre}"></span></td>
+        <td><span th:text="${comic.fechaPublicacion}"></span></td>
+        <td><span th:text="${comic.fechaUltPublicacion}"></span></td>
+        <td><span th:text="${comic.estado}"></span></td>
+        <td><span th:text="${comic.cantidad}"></span></td>
+        <td><span th:text="${comic.precio}"></span></td>
+        <td><span th:text="${comic.author.nombre}"></span></td>
+        <td><span th:text="${comic.clasificacion.nombre}"></span></td>
+        <td><span th:text="${comic.editorial.nombre}"></span></td>
+        <td><span th:text="${comic.genero.nombre}"></span></td>
+        <td><a th:href="@{/comics/editar/{id}(id=${comic.idComic})}" class="btn btn-primary">
+            <i class="fas fa-user-edit ml-2"></i>
+        </a></td>
+        <td><a th:href="@{/comics/eliminar/{id}(id=${comic.idComic})}" class="btn btn-danger">
+            <i class="fas fa-user-times ml-2"></i>
+        </a></td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:replace="layouts/Layouts::js"></div>
+
 </body>
+
 </html>
