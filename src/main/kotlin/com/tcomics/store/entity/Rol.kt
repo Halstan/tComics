@@ -21,6 +21,24 @@ data class Rol constructor(
         ) : Serializable {
 
         override fun toString(): String {
-                return "Rol(idRol=$idRol, type=$type, user=$user)"
+                return "Rol(idRol=$idRol, type=$type)"
         }
+
+        override fun equals(other: Any?): Boolean {
+                if (this === other) return true
+                if (other !is Rol) return false
+
+                if (idRol != other.idRol) return false
+                if (type != other.type) return false
+                if (user != other.user) return false
+
+                return true
+        }
+
+        override fun hashCode(): Int {
+                var result = idRol ?: 0
+                result = 31 * result + (type?.hashCode() ?: 0)
+                return result
+        }
+
 }

@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface RolRepository : JpaRepository<Rol, Int>{
+
+    fun findRolsByType(name: String): Set<Rol>
+
 }

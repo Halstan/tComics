@@ -33,4 +33,8 @@ class RolService constructor(
     fun deleteRol(idRol: Int){
         this.rolRepository.deleteById(idRol)
     }
+
+    fun findRolsByName(type: String): Set<Rol>{
+        return this.rolRepository.findRolsByType(type)
+    }
 }
