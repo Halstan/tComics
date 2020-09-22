@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="layouts/Layouts::head"></div>
+    <title>Listar ventas</title>
+</head>
+
+<body>
+
+<nav th:replace="layouts/Layouts::navbar"></nav>
+
+<h1>Lista de ventas</h1>
+
+<table class="table table-responsive table-bordered">
+    <thead>
+    <th>#</th>
+    <th>Usuario</th>
+    <th>Comic</th>
+    <th>Fecha de venta</th>
+    <th>Estado</th>
+    <th>Fecha de desactivación</th>
+    <th>Precio Total</th>
+    <th>Cantidad</th>
+    <th>Desactivar</th>
+    </thead>
+    <tbody>
+    <tr th:if="${ventas.isEmpty()}">
+        <td>No existing ventas</td>
+    </tr>
+    <tr th:each="venta : ${ventas}">
+        <td><span th:text="${venta.idVenta}"></span></td>
+        <td><span th:text="${venta.user.nombre}"></span></td>
+        <td><span th:text="${venta.comic.nombre}"></span></td>
+        <td><span th:text="${venta.fechaVenta}"></span></td>
+        <td><span th:text="${venta.state}"></span></td>
+        <td><span th:text="${venta.fechaDesactivo}"></span></td>
+        <td><span th:text="${venta.precioTotal}"></span></td>
+        <td><span th:text="${venta.cantidad}"></span></td>
+        <td><a th:href="@{/ventas/desactivar/{id}(id=${venta.idVenta})}" class="btn btn-danger">
+            <i class="fas fa-user-times ml-2"></i>
+        </a></td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:replace="layouts/Layouts::js"></div>
+
+</body>
+
+</html>

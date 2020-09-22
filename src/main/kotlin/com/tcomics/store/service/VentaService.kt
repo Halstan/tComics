@@ -12,29 +12,40 @@ import java.util.*
 class VentaService constructor(
         @Autowired
         val ventaRepository: VentaRepository
-    ){
+    ) {
 
-    fun findAll(): List<Venta>{
+    fun findAll(): List<Venta> {
         return this.ventaRepository.findAll()
     }
 
-    fun addVenta(venta: Venta): Venta{
+    fun addVenta(venta: Venta): Venta {
         return this.ventaRepository.save(venta)
     }
 
-    fun updateVenta(venta: Venta): Venta{
+    fun updateVenta(venta: Venta): Venta {
         return this.ventaRepository.save(venta)
     }
 
-    fun findVentaById(idVenta: Long): Optional<Venta>{
+    fun findVentaById(idVenta: Long): Optional<Venta> {
         return this.ventaRepository.findById(idVenta)
     }
 
-    fun deleteVenta(idVenta: Long){
-        return this.ventaRepository.deleteById(idVenta)
+    fun desactivateVenta(idVenta: Long){
+         this.ventaRepository.desactivateVenta(idVenta)
     }
 
-    fun findVentaByUser(idUser: Long): List<Venta>{
+    fun findVentaByUser(idUser: Long): List<Venta> {
         return this.ventaRepository.findVentasByUserIdUser(idUser)
+    }
+
+    /**
+     * This function makes de sale of a comic and
+     * subtract de quantity of the given comic in the venta
+     * @param cantidad the quantity of subtract.
+     * @param idComic the ID of the comic.
+     * @author Enzo Arauco.
+     */
+    fun makeVenta(cantidad: Short?, idComic:Long?){
+        this.ventaRepository.makeVenta(cantidad, idComic)
     }
 }

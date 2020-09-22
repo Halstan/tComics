@@ -12,33 +12,30 @@ data class Venta constructor(
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val idVenta: Long?,
+        val idVenta: Long? = null,
 
         @ManyToOne
         @JoinColumn(name = "idUser")
-        val user: User?,
+        val user: User? = null,
 
         @ManyToOne
         @JoinColumn(name = "idComic")
         val comic: Comic? = null,
 
         @CreationTimestamp
-        val fechaVenta: Date?,
+        val fechaVenta: Date? = null,
 
         @UpdateTimestamp
-        val fechaDesactivo: Date?,
+        val fechaDesactivo: Date? = null,
 
         @Column(length = 25)
-        var state: String,
+        var state: String? = null,
 
         @Column
-        val precioBruto: Double?,
+        var precioTotal: Double? = null,
 
         @Column
-        val precioTotal: Double?,
-
-        @Column
-        val cantidad: Short?
+        val cantidad: Short? = null
 
         ) : Serializable {
 
@@ -48,7 +45,7 @@ data class Venta constructor(
     }
 
     override fun toString(): String {
-        return "Venta(idVenta=$idVenta, user=$user, comic=$comic, fechaVenta=$fechaVenta, fechaDesactivo=$fechaDesactivo, state='$state', precioBruto=$precioBruto, precioTotal=$precioTotal, cantidad=$cantidad)"
+        return "Venta(idVenta=$idVenta, user=$user, comic=$comic, fechaVenta=$fechaVenta, fechaDesactivo=$fechaDesactivo, state='$state', precioTotal=$precioTotal, cantidad=$cantidad)"
     }
 
 }

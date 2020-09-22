@@ -1,6 +1,5 @@
 package com.tcomics.store.controller
 
-import com.tcomics.store.entity.Comic
 import com.tcomics.store.entity.Rol
 import com.tcomics.store.entity.User
 import com.tcomics.store.service.RolService

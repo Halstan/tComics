@@ -66,6 +66,12 @@ class ComicController @Autowired constructor(
 
     @GetMapping("/eliminar/{idComic}")
     private fun deleteComic(@PathVariable idComic: Long): String{
+        val comic2: Optional<Comic> = this.comicService.findComicById(idComic)
+        if (comic2.isPresent){
+            if(comic2.get().ventas?.isNotEmpty()!!){
+                return "redirect:/comics/listar"
+            }
+        }
         this.comicService.deleteComic(idComic)
         return "redirect:/comics/listar"
     }

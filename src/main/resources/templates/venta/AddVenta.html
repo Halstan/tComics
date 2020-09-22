@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="layouts/Layouts::head"></div>
+    <title>Hacer venta</title>
+</head>
+<body>
+
+<nav th:replace="layouts/Layouts::navbar"></nav>
+<div class="container">
+
+    <h1>Hacer venta</h1>
+
+    <form action="#" th:action="@{/ventas/agregar}" th:object="${venta}" method="post">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group col-md-6">
+                    <label for="cantidad" class="col-form-label">Cantidad</label>
+                    <input type="text" th:field = "*{cantidad}" class="form-control" id="cantidad" placeholder="Cantidad" th:maxlength="5" maxlength="5">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="users" class="form-group col-md-6">Usuario</label>
+                    <select name="listGenres" class="form-control selectpicker" th:field="*{user}" id="users">
+                        <option value=""> Selecciona una opción </option>
+                        <option th:each="user : ${users}"
+                                th:value="${user.idUser}"
+                                th:utext="${user.nombre}"></option>
+                    </select>
+
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="comic" class="col-form-label">Comic</label>
+                    <select name="listClasificaciones" class="form-control selectpicker" th:field="*{comic}" id="comic">
+                        <option value=""> Selecciona una opción </option>
+                        <option th:each="comic : ${comics}"
+                                th:value="${comic.idComic}"
+                                th:utext="${comic.nombre}"></option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <input type="submit" class="btn btn-primary" value="Registrar">
+                </div>
+
+                <input type="hidden" id="id" th:field="*{idVenta}">
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div th:replace="layouts/Layouts::js"></div>
+
+</body>
+</html>
