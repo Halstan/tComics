@@ -1,5 +1,6 @@
 package com.tcomics.store.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.springframework.format.annotation.DateTimeFormat
 import java.util.*
 import java.io.Serializable
@@ -35,7 +36,7 @@ data class Comic constructor(
 
         @NotBlank
         @Column(nullable = true, length = 255)
-        val Foto: String? = null,
+        var portada: String? = null,
 
         @ManyToOne
         @JoinColumn(name = "idGenre")
@@ -57,14 +58,15 @@ data class Comic constructor(
         var estado: String? = null,
 
         @OneToMany(mappedBy = "comic")
+        @JsonIgnore
         val ventas: List<Venta>? = null
 
         ): Serializable {
 
-    @PrePersist
-    fun init(){
-        estado = "PUBLICANDO"
-    }
+        @PrePersist
+        fun init(){
+            estado = "PUBLICANDO"
+        }
 
         @PreUpdate
         fun update(){
@@ -72,7 +74,7 @@ data class Comic constructor(
         }
 
         override fun toString(): String {
-                return "Comic(idComic=$idComic, nombre=$nombre, fechaPublicacion=$fechaPublicacion, fechaUltPublicacion=$fechaUltPublicacion, cantidad=$cantidad, precio=$precio, Foto=$Foto, estado=$estado, ventas=$ventas)"
+                return "Comic(idComic=$idComic, nombre=$nombre, fechaPublicacion=$fechaPublicacion, fechaUltPublicacion=$fechaUltPublicacion, cantidad=$cantidad, precio=$precio, portada=$portada, estado=$estado, ventas=$ventas)"
         }
 
 }

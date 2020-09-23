@@ -30,9 +30,9 @@ data class Author constructor(
         @Column
         val comicsEscritos: Short? = null,
 
-        //@NotBlank
         @Column(nullable = true, length = 255)
-        val foto: String? = null,
+        @JsonIgnore
+        var foto: String? = null,
 
         @Column(length = 15)
         var estado: String? = null,

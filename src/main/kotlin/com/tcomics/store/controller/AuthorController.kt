@@ -5,10 +5,12 @@ import com.tcomics.store.service.AuthorService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.*
+import org.springframework.web.multipart.MultipartFile
+import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
 import java.util.*
 import javax.validation.Valid
 
@@ -32,7 +34,21 @@ class AuthorController constructor(
     }
 
     @PostMapping("/agregar")
-    private fun addAuthorPost(@Valid author: Author, model: Model): String{
+    private fun addAuthorPost(@Valid author: Author, model: Model,  @RequestParam("file") foto: MultipartFile): String{
+
+        if(!foto.isEmpty){
+            val uniqueName: String = UUID.randomUUID().toString() + "_" + foto.originalFilename.toString()
+            val rootPath: Path = Paths.get("uploads/author").resolve(uniqueName)
+            val absolutePath: Path = rootPath.toAbsolutePath()
+
+            try {
+                Files.copy(foto.inputStream, absolutePath)
+                author.foto = uniqueName
+            }catch (e: IOException){
+                e.printStackTrace()
+            }
+        }
+
         this.authorService.addAuthor(author)
         model.addAttribute("authors", this.authorService.findAll())
         return "redirect:/autores/listar"
