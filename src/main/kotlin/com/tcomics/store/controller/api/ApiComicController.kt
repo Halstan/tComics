@@ -32,4 +32,11 @@ class ApiComicController constructor(
         return ResponseEntity(comic, HttpStatus.OK)
     }
 
+    @GetMapping("{pageNo}/{pageSize}", produces = ["application/json"])
+    private fun getPaginatedComics(@PathVariable pageNo: Int, @PathVariable pageSize: Int): ResponseEntity<List<Comic>>{
+        val comics: List<Comic> = this.comicService.findPaginated(pageNo, pageSize)
+
+        return ResponseEntity(comics, HttpStatus.OK)
+    }
+
 }
